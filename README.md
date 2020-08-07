@@ -177,3 +177,7 @@ DP)
     #rxsock = ThreadingUDPServer(('::', PORT), MyUDPHandler)
     #rxsock.serve_forever()
     #print("OK")
+    
+    
+    
+    https://www.pharmarise.jp/clinic/clinic09.html
