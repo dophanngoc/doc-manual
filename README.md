@@ -5,7 +5,8 @@ https://www.java.com/ja/download/
 ### Install Graphvis
 http://www.graphviz.org/download/
 ### Install PlanUML to vscode
-![install plantuml to vscode](noname77.PNG)
+
+![install plantuml to vscode](https://github.com/dophanngoc/doc-manual/blob/master/picture/noname77.png)
 
 ### Example:
 #### Go to plantuml homepage to get syntax and features: https://plantuml.com/
@@ -31,7 +32,7 @@ Project starts the 1st of january 2021
 ```
 * Save the file to local disk with *.pu* or *.wsd* tag name.
 * Enter *Alt+D* or *F1* then enter *PlantUML: Preview Current Diagram*
-![example 1](noname80.PNG)
+![example 1](https://github.com/dophanngoc/doc-manual/blob/master/picture/noname80.png)
 * To export the diagram to picture, Press *F1* then enter: *PlantUML: Export Current File Diagram*; *png*; the output should be at */Document/PlantUML/*
 
 **Sample code 2:**
@@ -60,4 +61,4 @@ state Configuring {
 @enduml
 ```
 
-![example 1](noname81.PNG)
+![example 1](https://github.com/dophanngoc/doc-manual/blob/master/picture/noname81.png)
