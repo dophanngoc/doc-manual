@@ -1,0 +1,31 @@
+@startuml
+scale 2000 width
+scale 1000 height
+hide empty description
+state Degu {
+  state "PowerON" as long0
+  long0 : replug / reset
+  long0 --> create_socket : start zephyr
+  long0 --> initUdp
+  initUdp --> openthread_Tasklet : openthread task
+  openthread_Tasklet --> openthread_Tasklet
+  create_socket --> sendUDP : mcast
+  state "UDP receive handler" as long3
+  long3 --> get_GW_addr
+  get_GW_addr : put to COAP socket
+}
+
+sendUDP --> Router : Request gwip
+
+state Degu_GW {
+  state "Create socket Sever" as long1
+  long1 --> long1 : New Data
+  long1 --> udpHander_Rereceive : Start
+  udpHander_Rereceive --> udpHander_Rereceive
+  Router --> udpHander_Rereceive : Request gwip
+  udpHander_Rereceive --> get_degu_addr
+  get_degu_addr --> send_unicast
+  send_unicast -> Router : response ipaddr
+  Router --> long3 : response ipaddr
+}
+@enduml

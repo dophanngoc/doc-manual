@@ -1,0 +1,42 @@
+@startuml
+scale 2000 width
+scale 1200 height
+
+start --> add_new_sensor
+start --> mcast_regularly
+mcast_regularly : 5min
+mcast_regularly --> mcast_regularly : transfer_gw_ipaddr
+add_new_sensor --> add_new_sensor : transfer_gw_ipaddr
+state Degu_GW {
+  state "commissioner succeeded" as long1
+  threading --> threading : every 5min
+  long1 : threading wait 10 sec
+  long1 --> long1
+  long1--> create_UDP_socket
+
+  threading --> create_UDP_socket
+  create_UDP_socket : mcastIP,mPort
+  create_UDP_socket --> send_Multicast
+  send_Multicast : included GW ipAddr
+  send_Multicast --> send_Multicast : 3 shots
+}
+
+left to right direction
+
+Degu_GW --> New_degu : 2.4Ghz Wireless
+
+top to bottom direction
+
+state New_degu {
+  state "join succeeded" as long2
+  Openthread_tasklet1 --> Openthread_tasklet1
+  long2 --> initialize_UDP
+  initialize_UDP --> create_socket
+  create_socket : mIpv6, mPort
+  create_socket --> handler_UDP_comming
+  handler_UDP_comming --> handler_UDP_comming : interrupt
+  handler_UDP_comming --> get_GW_Addr
+  get_GW_Addr : put to COAP socket
+  get_GW_Addr --> get_GW_Addr
+}
+@enduml
